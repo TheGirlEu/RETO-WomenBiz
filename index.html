@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RETO: Mentalidad de trader</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            transition: background-color 0.4s, color 0.4s;
+        }
+        body.light {
+            background-color: #fafafa;
+            color: #333;
+        }
+        body.dark {
+            background-color: #0a0a0f;
+            color: #e0e0e0;
+        }
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            transition: color 0.4s;
+        }
+        body.light h1 {
+            color: #1f3c88;
+        }
+        body.dark h1 {
+            color: #6b9fff;
+        }
+        p.subtitle {
+            font-size: 16px;
+            transition: color 0.4s;
+        }
+        body.light p.subtitle {
+            color: #666;
+        }
+        body.dark p.subtitle {
+            color: #aaa;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 12px;
+            transition: background-color 0.4s, box-shadow 0.4s;
+        }
+        body.light .section {
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        body.dark .section {
+            background-color: #121218;
+            box-shadow: 0 2px 12px rgba(107,159,255,0.15);
+        }
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            transition: color 0.4s;
+        }
+        body.light .section h2 {
+            color: #1f3c88;
+        }
+        body.dark .section h2 {
+            color: #6b9fff;
+        }
+        .section p {
+            margin-bottom: 12px;
+            transition: color 0.4s;
+        }
+        body.light .section p {
+            color: #444;
+        }
+        body.dark .section p {
+            color: #b0b0b0;
+        }
+        .section ul {
+            margin: 15px 0;
+            padding-left: 20px;
+            transition: color 0.4s;
+        }
+        body.light .section ul {
+            color: #444;
+        }
+        body.dark .section ul {
+            color: #b0b0b0;
+        }
+        .section li {
+            margin-bottom: 8px;
+        }
+        .audio-player {
+            width: 100%;
+            margin: 20px 0;
+        }
+        audio {
+            width: 100%;
+            border-radius: 8px;
+        }
+        body.light audio {
+            background-color: #f0f0f0;
+        }
+        body.dark audio {
+            background-color: #1a1a22;
+        }
+        .button {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: #1f3c88;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #162f6b;
+        }
+        body.dark .button {
+            background-color: #6b9fff;
+            color: #0a0a0f;
+        }
+        body.dark .button:hover {
+            background-color: #4a85ff;
+        }
+        .toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .toggle-btn {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        body.light .toggle-btn {
+            background-color: #1f3c88;
+            color: white;
+        }
+        body.dark .toggle-btn {
+            background-color: #6b9fff;
+            color: #0a0a0f;
+        }
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 3s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+        }
+        .footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+            transition: color 0.4s;
+        }
+        body.light .footer {
+            color: #888;
+        }
+        body.dark .footer {
+            color: #666;
+        }
+    </style>
+</head>
+<body class="light">
+    <div class="toggle-container">
+        <button class="toggle-btn" onclick="toggleMode()">🌙 Modo oscuro</button>
+    </div>
+
+    <div class="stars-container" id="stars"></div>
+
+    <div class="container">
+        <header>
+            <h1>Reto: Mentalidad de trader</h1>
+            <p class="subtitle">Mi nueva historia financiera</p>
+        </header>
+
+        <div class="section">
+            <h2>🎧 Nota de voz: Nueva historia financiera</h2>
+            <div class="audio-player">
+                <audio controls>
+                    <source src="audio.ogg" type="audio/mpeg">
+                    Tu navegador no soporte el audio.
+                </audio>
+            </div>
+            <p><small>Escucha esta nota cada noche antes de dormir durante 7 dias.</small></p>
+        </div>
+
+        <div class="section">
+            <h2>📄 Diario de abundancia</h2>
+            
+
+            <div style="margin: 20px 0; padding: 20px; background: rgba(0,0,0,0.03); border-radius: 8px; overflow-y: auto; max-height: 400px;">
+                <h3 style="color: #1f3c88; margin-bottom: 15px;">Formas en las que ya soy rica</h3>
+                <ul>
+                    <li>Tiempo</li>
+                    <li>Relaciones</li>
+                    <li>Oportunidades</li>
+                </ul>
+
+                <h3 style="color: #1f3c88; margin-bottom: 15px; margin-top: 20px;">Ingresos</h3>
+                <ul>
+                    <li>Pagos</li>
+                    <li>Propinas</li>
+                    <li>Obsequios</li>
+                </ul>
+
+                <h3 style="color: #1f3c88; margin-bottom: 15px; margin-top: 20px;">Reacción al Dinero</h3>
+                <p style="background: rgba(31,60,136,0.1); padding: 15px; border-radius: 6px; font-style: italic;">
+                    Cuando gano dinero, siento emociones que se entrelazan: una nostalgia suave por lo que no tuve, un orgullo tibio por lo que voy construyendo, un miedo que aparece como sombra temerosa, una calma que me dice que esto es natural, y una presión invisible que quiero dejar pasar. </br></br> Todas son parte de mi historia, y todas me están enseñando a relacionarme con el dinero de forma más sana.
+                </p>
+            </div>
+
+            <a href="📄 Diario de abundancia.pdf" class="button" download>Descargar PDF completo</a>
+        </div>
+
+        <div class="footer">
+            <p>#EugeAprendiendo</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const btn = document.querySelector('.toggle-btn');
+            const stars = document.getElementById('stars');
+
+            if (body.classList.contains('light')) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                btn.textContent = '☀️ Modo claro';
+                createStars();
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                btn.textContent = '🌙 Modo oscuro';
+                stars.innerHTML = '';
+            }
+        }
+
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numStars = 80;
+
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const size = Math.random() * 3 + 1;
+                const duration = Math.random() * 2 + 2;
+                const delay = Math.random() * 3;
+
+                star.style.left = x + '%';
+                star.style.top = y + '%';
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.animationDuration = duration + 's';
+                star.style.animationDelay = delay + 's';
+
+                starsContainer.appendChild(star);
+            }
+        }
+    </script>
+</body>
+</html>
